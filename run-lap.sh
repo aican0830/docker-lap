@@ -57,10 +57,4 @@ fi
 /usr/sbin/postfix start
 
 # Run Apache:
-2>/dev/null /usr/sbin/apachectl -k stop
-if [ $LOG_LEVEL == 'debug' ]; then
-    /usr/sbin/apachectl -DFOREGROUND -k start -e debug
-else
-    &>/dev/null /usr/sbin/apachectl -DFOREGROUND -k start
-fi
-
+/usr/bin/supervisord

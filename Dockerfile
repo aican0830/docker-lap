@@ -31,7 +31,12 @@ RUN yum install -y \
 	php-xml \
 	php-xmlrpc \
 	ImageMagick \
-	ImageMagick-devel
+	ImageMagick-devel \
+	python-setuptools
+
+#set supervisord
+RUN easy_install supervisor
+COPY supervisord.conf /etc/supervisord.conf
 
 RUN sh -c 'printf "\n" | pecl install mongo imagick'
 RUN sh -c 'echo short_open_tag=On >> /etc/php.ini'
